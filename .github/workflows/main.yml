@@ -1,0 +1,20 @@
+on:
+  push:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  run-workflow:
+    runs-on: self
+
+    steps:
+    - name: print something
+      run: |
+        echo "workflow running..."
+        
+      
+  
+  
+
+  
