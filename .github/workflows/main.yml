@@ -6,7 +6,7 @@ on:
 
 jobs:
   run-workflow:
-    runs-on: self
+    runs-on: self-hosted
 
     steps:
     - name: print something
