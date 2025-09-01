@@ -14,7 +14,4 @@ jobs:
     - name: print something
       run: |
         echo "workflow running..."
-    - name: fail this
-      run: | 
-        ant --version
   
