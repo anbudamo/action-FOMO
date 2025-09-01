@@ -22,7 +22,7 @@ jobs:
           python3 -m venv .venv
           source .venv/bin/activate
           pip install --upgrade pip
-          pip install playsound
+          pip install playsound==1.2.2
           pip install PyObjC
 
       - name: Run happy script if success
