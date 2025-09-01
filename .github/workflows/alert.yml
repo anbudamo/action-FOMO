@@ -1,0 +1,38 @@
+on:
+  workflow_run:
+    workflows: [run-workflow]
+    types: [completed]
+
+jobs:
+  notify:
+    runs-on: self-hosted
+    steps:
+      - run: echo "Triggered by workflow: ${{ github.event.workflow_run.name }}"
+
+      - name: Checkout repo content
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install playsound
+          pip install PyObjC
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Run happy script if success
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
+        run: |
+          echo "run-workflow passed"
+          python alerts/happy.py
+
+      - name: Run sad script if failure
+        if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+        run: |
+          echo "The triggering workflow failed"
+          python alerts/sad.py
+          
