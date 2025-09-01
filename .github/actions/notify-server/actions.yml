@@ -1,0 +1,12 @@
+name: 'Notify Local Server'
+description: 'Send notif to local server when workflow completes'
+inputs:
+  url: 
+    description: 'The URL to the local server'
+    required: true
+  token: 
+    desciption: 'Auth'
+    required: true
+runs: 
+  using: 'node12'
+  main: 'index.js'

@@ -7,35 +7,14 @@ on:
 
 jobs:
   notify:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
-      - run: echo "Triggered by main workflow"
+      - run: echo "Notifying..."
+      - name: Notify Local Server
+        uses: ./.github/actions/notify-local-server
+        with: 
+          url: ${{ secrets.NGROK_URL }}/webhook
+          token: ${{ secrets.AUDIO_TOKEN }}
 
-      - name: Checkout repo content
-        uses: actions/checkout@v2
 
-      - name: Use System Python
-        run: python3 --version
-
-      - name: Install dependencies
-        run: |
-          python3 -m venv .venv
-          source .venv/bin/activate
-          pip install --upgrade pip
-          pip install playsound==1.2.2
-          pip install PyObjC
-
-      - name: Run happy script if success
-        if: ${{ github.event.workflow_run.conclusion == 'success' }}
-        run: |
-          echo "main workflow passed"
-          source .venv/bin/activate
-          python3 alerts/happy.py
-
-      - name: Run sad script if failure
-        if: ${{ github.event.workflow_run.conclusion == 'failure' }}
-        run: |
-          echo "main workflow failed"
-          source .venv/bin/activate
-          python3 alerts/sad.py
           
