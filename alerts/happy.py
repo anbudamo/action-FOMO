@@ -1,3 +1,3 @@
 from playsound import playsound
 
-playsound('final_bell.mp3')
+playsound('actions/final_bell.mp3')
