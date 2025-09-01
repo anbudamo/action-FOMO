@@ -12,6 +12,9 @@ jobs:
       - run: echo "Notifying..."
       - name: Checkout Repo
         uses: actions/checkout@v3
+      - name: Install notify-server deps
+        run: |
+          npm install --prefix .github/actions/notify-server
       - name: Notify Local Server
         uses: ./.github/actions/notify-server
         with: 
