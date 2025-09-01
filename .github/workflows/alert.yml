@@ -7,7 +7,7 @@ jobs:
   notify:
     runs-on: self-hosted
     steps:
-      - run: echo "Triggered by workflow: ${{ github.event.workflow_run.name }}"
+      - run: echo "Triggered by run-workflow"
 
       - name: Checkout repo content
         uses: actions/checkout@v2
