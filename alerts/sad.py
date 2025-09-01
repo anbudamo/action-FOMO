@@ -1,3 +1,3 @@
 from playsound import playsound
 
-playsound('actions/reverb.mp3')
+playsound('alerts/reverb.mp3')
