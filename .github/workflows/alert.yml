@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Notifying..."
+      - name: Checkout Repo
+        uses: actions/checkout@v3
       - name: Notify Local Server
         uses: ./.github/actions/notify-local-server
         with: 
