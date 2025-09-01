@@ -29,11 +29,13 @@ jobs:
         if: ${{ github.event.workflow_run.conclusion == 'success' }}
         run: |
           echo "main workflow passed"
+          source .venv/bin/activate
           python3 alerts/happy.py
 
       - name: Run sad script if failure
         if: ${{ github.event.workflow_run.conclusion == 'failure' }}
         run: |
           echo "main workflow failed"
+          source .venv/bin/activate
           python3 alerts/sad.py
           
