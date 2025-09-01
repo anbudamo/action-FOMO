@@ -1,13 +1,13 @@
 on:
   workflow_run:
-    workflows: [run-workflow]
+    workflows: [main]
     types: [completed]
 
 jobs:
   notify:
     runs-on: self-hosted
     steps:
-      - run: echo "Triggered by run-workflow"
+      - run: echo "Triggered by main workflow"
 
       - name: Checkout repo content
         uses: actions/checkout@v2
@@ -27,12 +27,12 @@ jobs:
       - name: Run happy script if success
         if: ${{ github.event.workflow_run.conclusion == 'success' }}
         run: |
-          echo "run-workflow passed"
+          echo "main workflow passed"
           python alerts/happy.py
 
       - name: Run sad script if failure
         if: ${{ github.event.workflow_run.conclusion == 'failure' }}
         run: |
-          echo "The triggering workflow failed"
+          echo "main workflow failed"
           python alerts/sad.py
           
