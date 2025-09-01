@@ -1,3 +1,5 @@
+name: alert
+
 on:
   workflow_run:
     workflows: [main]
@@ -17,7 +19,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m venv .venv
+          python3 -m venv .venv
           source .venv/bin/activate
           pip install --upgrade pip
           pip install playsound
@@ -27,11 +29,11 @@ jobs:
         if: ${{ github.event.workflow_run.conclusion == 'success' }}
         run: |
           echo "main workflow passed"
-          python alerts/happy.py
+          python3 alerts/happy.py
 
       - name: Run sad script if failure
         if: ${{ github.event.workflow_run.conclusion == 'failure' }}
         run: |
           echo "main workflow failed"
-          python alerts/sad.py
+          python3 alerts/sad.py
           
