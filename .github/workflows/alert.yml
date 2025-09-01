@@ -13,7 +13,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
       - name: Notify Local Server
-        uses: ./.github/actions/notify-local-server
+        uses: ./.github/actions/notify-server
         with: 
           url: ${{ secrets.NGROK_URL }}/webhook
           token: ${{ secrets.AUDIO_TOKEN }}
