@@ -11,11 +11,12 @@ async function run() {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             }
-        });
+        }).then(function (response) {
+            console.log('Response status: ', response.status)
+        })
         console.log('Notif sent to local server');
-        console.log('Response status: ', response.status)
     } catch (error) {response.status)
-        core.setFailed(`Action failed with error: ${error.message}`);
+        core.setFailed(`Action failed with error: ${error.message}`)
     }
 }
 
