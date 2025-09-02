@@ -7,6 +7,9 @@ inputs:
   token: 
     desciption: 'Auth'
     required: true
+  status:
+    description: 'Whether the workflow run was a success or a failure'
+    required: true
 runs: 
   using: 'node12'
   main: 'index.js'

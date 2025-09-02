@@ -5,8 +5,9 @@ async function run() {
     try{
         const url = core.getInput('url')
         const token = core.getInput('token')
+        const status = core.getInput('status')
 
-        const response = await axios.post(url, { message: 'Workflow completed' }, {
+        const response = await axios.post(url, { message:`${status}` }, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'

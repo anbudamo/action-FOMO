@@ -20,6 +20,7 @@ jobs:
         with: 
           url: ${{ secrets.NGROK_URL }}/webhook
           token: ${{ secrets.AUDIO_TOKEN }}
+          status: ${{ github.event.workflow_run.conclusion == 'success' && 'success' || 'failure' }}
 
 
           
