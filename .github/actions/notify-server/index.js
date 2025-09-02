@@ -6,14 +6,15 @@ async function run() {
         const url = core.getInput('url')
         const token = core.getInput('token')
 
-        await axios.post(url, { message: 'Workflow completed' }, {
+        response = await axios.post(url, { message: 'Workflow completed' }, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             }
         });
         console.log('Notif sent to local server');
-    } catch (error) {
+        console.log('Response status: ', response.status)
+    } catch (error) {response.status)
         core.setFailed(`Action failed with error: ${error.message}`);
     }
 }
