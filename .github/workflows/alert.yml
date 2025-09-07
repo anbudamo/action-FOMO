@@ -18,7 +18,7 @@ jobs:
       - name: Notify Local Server
         uses: ./.github/actions/notify-server
         with: 
-          url: ${{ secrets.NGROK_URL }}/webhook
+          url: ${{ secrets.NGROK_URL }}/triggers/audio
           token: ${{ secrets.AUDIO_TOKEN }}
           status: ${{ github.event.workflow_run.conclusion == 'success' && 'success' || 'failure' }}
 
